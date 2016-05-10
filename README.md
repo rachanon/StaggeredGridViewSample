@@ -10,10 +10,10 @@ There are a few things you should know if you're going to make modifications to 
 
 Like ListView, SGV populates from an adapter and recycles views that fall out of the visible boundaries of the grid. A few invariants always hold:
 
-    mFirstPosition is the adapter position of the View returned by getChildAt(0).
-    Any child index can be translated to an adapter position by adding mFirstPosition.
-    Any adapter position can be translated to a child index by subtracting mFirstPosition.
-    Views for items in the range [mFirstPosition, mFirstPosition + getChildCount()) are currently attached to the grid as children. All other adapter positions do not have active views.
+- mFirstPosition is the adapter position of the View returned by getChildAt(0).
+- Any child index can be translated to an adapter position by adding mFirstPosition.
+- Any adapter position can be translated to a child index by subtracting mFirstPosition.
+- Views for items in the range [mFirstPosition, mFirstPosition + getChildCount()) are currently attached to the grid as children. All other adapter positions do not have active views.
 
 This means a few things thanks to the staggered grid's nature. Some views may stay attached long after they have scrolled offscreen if removing and recycling them would result in breaking one of the invariants above.
 
